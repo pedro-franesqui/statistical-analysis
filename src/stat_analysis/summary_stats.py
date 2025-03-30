@@ -27,7 +27,17 @@ information present in the data.
 from collections import Counter
 from typing import Union
 
-__all__ = ["mean", "weighted_mean", "geometric_mean"]
+__all__ = [
+    "mean",
+    "weighted_mean",
+    "geometric_mean",
+    "discrete_geometric_mean",
+    "median",
+    "grouped_freq_median",
+    "get_percentile",
+    "mode",
+    "get_iqr"
+]
 __version__ = "1.0.0"
 __author__ = "github: pedro-franesqui"
 
@@ -225,6 +235,21 @@ def get_iqr(classes: list[tuple], frequencies: list) -> Union[int, float]:
     q1 = get_percentile(classes, frequencies, 0.25)
     q3 = get_percentile(classes, frequencies, 0.75)
     return q3 -q1
+
+def get_max(classes: list[tuple[int]]) -> int:
+    n_max: int  = max(classes)
+    if n_max[0] < n_max[1]:
+        return n_max[1]
+    else:
+        raise ValueError(f"Tuple {n_max} should contain (lower, upper)")
+
+def get_min(classes: list[tuple]) -> int:
+    n_min: int = min(classes)
+    if n_min[0] < n_min[1]:
+        return n_min[0]
+    else:
+        raise ValueError(f"Tuple {n_min} should contain (lower, upper)")
+
 
 # Private #
 

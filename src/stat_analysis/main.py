@@ -1,10 +1,10 @@
 import summary_stats as st
+import probability_calc as prob
 
 def main():
-    data = [45, 18, 18,15, 15 ]
-    freqs = [10, 5, 30, 21, 2]
-    dataset = [(0, 3), (3, 6), (6, 9), (9, 12), (12, 15)]
-    print(st.get_percentile(dataset, freqs, 0.1))
+    src = "P(A) = p(¬C ∩ D) + P(A u ¬B) - P(E)"
+    parser = prob.ProbabilityParser(src)
+    parser.expr_eval()
 
 if __name__ == "__main__":
     main()
