@@ -87,7 +87,7 @@ class ProbabilityParser:
     def expr_eval(self):
         self.expr = self.__read_file()
         self.__advance()
-        print(self.__tokenize())
+        print(self.__tokenize()[0])
 
     def __read_file(self) -> str:
         if self.from_file:
